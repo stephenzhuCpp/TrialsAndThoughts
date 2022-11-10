@@ -1,6 +1,22 @@
-#Details about string
-When creating an array of characters, namely string, remember to reserve a space for `'\0'`. i.e.
+# Details about string
+
+## Definition
+
+When creating an array of characters, namely string, remember to reserve a space for `'\0'`.
+ 
+ e.g.
 ```
 const int LEN = 80;
 char sentence[LEN + 1];
+```
+
+## In `cin.getline`
+
+When using `cin.getline`, the second parameter means the whole length or space of the string.
+
+e.g.
+```
+const int LEN = 80;
+char sentence[LEN + 1];
+cin.getline(sentence, LEN + 1);
 ```

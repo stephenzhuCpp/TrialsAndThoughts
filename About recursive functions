@@ -1,8 +1,14 @@
-#Recursive Functions
-  ## basic features
-    (1)It contains a recursive procedure and a backtracing procedure.
-    (2)It decreases the complexity of the code, though increasing the time complexity with loads of unnecessary repeated calculating when the times of the recursion get higher.
-    (3)The trust of recursion 
-    (4)It should have at least one parameter related to the end conditon of the recursion
-  ## algorithm based on recursive functions
+# Recursive Functions
+
+## basic features
+
+(1) It contains a recursive procedure and a backtracing procedure.
+  
+(2) It decreases the complexity of the code, though increasing the time complexity with loads of unnecessary repeated calculating when the times of the recursion get higher.
+
+(3) The trust of recursion 
+
+(4) It should have at least one parameter related to the end conditon of the recursion
+
+## algorithm based on recursive functions
     
