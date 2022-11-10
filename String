@@ -1,0 +1,16 @@
+# Skip initial blank spaces when inputting a string
+
+e.g.
+```
+const int LEN = 10;
+char s1[LEN + 1], s2[LEN + 1] = { 0 };
+//if s2[i] is going to be used, s2 must have been initialized
+
+cin.get(s2[0]);
+while (s2[0] == ' ')
+	cin.get(s2[0]);
+cin.getline(s1, LEN + 1);
+strncat_s(s2, s1, LEN - 1);
+
+//s2 is the final form of the string
+```
