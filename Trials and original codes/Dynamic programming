@@ -1,0 +1,47 @@
+//dynamic programming
+//the least coins needed to give change
+#include<iostream>
+
+using namespace std;
+
+const int TYPESOFCOINS = 6;
+const int coins[TYPESOFCOINS] = { 1,5,10,20,50,100 };
+const int MAX = 1000;
+int coinsUsed[MAX] = { 0 };
+
+int LeastCoins(int n);
+
+int main()
+{
+	int n;
+
+	cin >> n;
+
+	cout << LeastCoins(n);
+
+	return 0;
+}
+
+int LeastCoins(int n)
+{
+	for (int i = 1; i <= n; i++)
+	{
+		int minCoins = MAX;
+		for (int j = 0; j < TYPESOFCOINS; j++)
+		{
+			if (coins[j] > i)
+			{
+				break;
+			}
+			if (coinsUsed[i - coins[j]] + 1 < minCoins)
+			{
+				minCoins = coinsUsed[i - coins[j]] + 1;
+				//cout << minCoins << '\t';
+			}
+		}
+		//cout << endl;
+		coinsUsed[i] = minCoins;
+	}
+
+	return coinsUsed[n];
+}
