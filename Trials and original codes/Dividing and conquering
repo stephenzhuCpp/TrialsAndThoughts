@@ -1,0 +1,83 @@
+# Dividing and conquering
+```
+//dividing and conquering
+//solve the problem of the longest subsequence(子列) whose sum is also the largest
+#include<iostream>
+
+using namespace std;
+
+const int LEN = 10;
+
+int MaxSum(int sequence[], int len);
+int MaxSumInCertainRange(int sequence[], int start, int end);
+template <class T>
+T Max3(T a, T b, T c);
+
+int main()
+{
+	int a[LEN];
+
+	for (int i = 0; i < LEN; i++)
+	{
+		cin >> a[i];
+	}
+
+	cout << MaxSum(a, LEN);
+
+	return 0;
+}
+
+template<class T>
+T Max3(T a, T b, T c)
+{
+	T ret = a;
+	if (b > ret)
+	{
+		ret = b;
+	}
+	if (c > ret)
+	{
+		ret = c;
+	}
+
+	return T(ret);
+}
+
+int MaxSum(int sequence[], int len)
+{
+	return MaxSumInCertainRange(sequence, 0, len - 1);
+}
+
+int MaxSumInCertainRange(int sequence[], int start, int end)
+{
+	int mid = (start + end) / 2;
+	int maxOfLeft, maxOfRight, maxOfLeftFromMid = sequence[mid], maxOfRightFromMid = sequence[mid + 1];
+	int sum = 0;
+
+	if (start == end)
+	{
+		return (sequence[start] > 0) ? sequence[start] : 0;
+	}
+	maxOfLeft = MaxSumInCertainRange(sequence, start, mid);
+	maxOfRight = MaxSumInCertainRange(sequence, mid + 1, end);
+	for (int i = mid; i >= start; i--)
+	{
+		sum += sequence[i];
+		if (maxOfLeftFromMid < sum)
+		{
+			maxOfLeftFromMid = sum;
+		}
+	}
+	sum = 0;
+	for (int i = mid + 1; i <= end; i++)
+	{
+		sum += sequence[i];
+		if (maxOfRightFromMid < sum)
+		{
+			maxOfRightFromMid = sum;
+		}
+	}
+
+	return Max3(maxOfLeft, maxOfRight, maxOfLeftFromMid + maxOfRightFromMid);
+}
+```
