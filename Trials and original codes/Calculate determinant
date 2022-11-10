@@ -1,0 +1,75 @@
+# Calculate the determinant(only integer)
+```
+//calculate the determinant
+
+#include <iostream>
+#include<cmath>
+
+using namespace std;
+
+const int MAX = 6;
+
+void CreateMinor(const int det[MAX][MAX], int minor[MAX][MAX], const int order, const int column);
+int CalculateDet(const int det[MAX][MAX], const int order);
+
+int main()
+{
+	int det[MAX][MAX];
+	int order;
+
+	cout << "Please enter the order of the determinant:" << endl;
+	cin >> order;
+	cout << "Please enter the determinant:" << endl;
+	for (int i = 0; i < order; i++)
+	{
+		for (int j = 0; j < order; j++)
+		{
+			cin >> det[i][j];
+		}
+	}
+
+	cout << "The result of the determinant equals " << CalculateDet(det, order) << endl;
+
+	return 0;
+}
+
+void CreateMinor(const int det[MAX][MAX], int minor[MAX][MAX], const int order, const int column)
+{
+	for (int i = 0; i < order - 1; i++)
+	{
+		for (int j = 0; j < order - 1; j++)
+		{
+			if (j < column)
+			{
+				minor[i][j] = det[i][j];
+			}
+			else
+			{
+				minor[i][j] = det[i][j + 1];
+			}
+		}
+	}
+}
+
+int CalculateDet(const int det[MAX][MAX], const int order)
+{
+	int result = 0;
+
+	if (order == 1)
+	{
+		result = det[0][0];
+	}
+	else
+	{
+		for (int i = 0; i < order; i++)
+		{
+			int minor[MAX][MAX] = { 0 };					//minor:det of the minor
+			CreateMinor(det, minor, order, i);
+			result += det[order - 1][i] * pow(-1, i + order - 1) * CalculateDet(minor, order - 1);
+		}
+
+	}
+	return result;
+}
+
+```

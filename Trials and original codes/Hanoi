@@ -1,0 +1,50 @@
+# Hanoi
+```
+//hanoi
+
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+long Hanoi(int n, char start, char tmp, char finish, long* count);
+
+int main()
+{
+	int n;
+	long count[64] = { 0 };
+
+	cin >> n;
+
+	cout << "n" << '\t' << "count" << "\t\t" << "2^n - 1" << endl;
+
+	cout << fixed << setprecision(0);
+
+	for (int i = 0; i < n; i++)
+	{
+		count[i] = Hanoi(i + 1, 'A', 'B', 'C', &count[i]);
+		cout << i + 1 << '\t' << count[i] << "\t\t" << pow(2, i + 1) - 1 << endl;
+        //to tell the relationship between n and count
+	}
+
+	return 0;
+}
+
+long Hanoi(int n, char start, char tmp, char finish, long* count)
+{
+	if (n == 1)
+	{
+		//cout << 1 << ":" << start << "->" << finish << " \t";     //can be used in a single invocation of Hanoi
+		(*count)++;
+	}
+	else
+	{
+		Hanoi(n - 1, start, finish, tmp, count);
+		//cout << n << ":" << start << "->" << finish << " \t";
+		(*count)++;
+		Hanoi(n - 1, tmp, start, finish, count);
+	}
+
+	return *count;
+}
+```
