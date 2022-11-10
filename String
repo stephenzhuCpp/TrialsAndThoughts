@@ -14,3 +14,24 @@ strncat_s(s2, s1, LEN - 1);
 
 //s2 is the final form of the string
 ```
+
+# Turn a string of numbers into an integer
+
+When you have to fetch the char of numbers one by one from the start to end, an excellent way to do it is **to pretend the currrent `sum` as the result** and **the next turn of the circulation just `sum * 10 + k`**.
+
+This method is definitely smart and effective.
+It can be used to deal with different bases of numbers and a string containing more than one number.
+
+e.g.
+```
+const int LEN = 10;
+char s[LEN + 1];
+int sum = 0;
+
+cin >> s;
+for (int i = 0; i < strlen(s); i++)
+{
+	sum = sum * 10 + s[i] - '0';
+}
+```
+
