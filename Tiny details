@@ -1,0 +1,6 @@
+#Details about string
+When creating an array of characters, namely string, remember to reserve a space for `'\0'`. i.e.
+```
+const int LEN = 80;
+char sentence[LEN + 1];
+```
