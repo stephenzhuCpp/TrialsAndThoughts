@@ -12,6 +12,7 @@ assert(a > 0);
 ```
 
 ## Tips
+
 (1) Use one sentence of `assert` to judge **only one statement**, or you may not know the exact error.
 
 (2) `assert` is just a assistant means and it cannot replace `if`.
@@ -22,6 +23,10 @@ assert("np must not be NULL. " && np != NULL);
 //or
 assert(("np must not be NULL. ", np != NULL));  //two brackets
 ```
+
+(4) **Never** do something that has effect on the program. e.g. `assert((a = b + c) > 0);`
+
+(5) When `assert` is **not needed**, add `#define NDEBUG`.
 
 ## Application
 ### Point
