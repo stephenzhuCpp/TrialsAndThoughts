@@ -1,0 +1,37 @@
+# Assert
+## Basic usage
+`assert` can be used to confirm something is true and stop the program when that is false.
+It can be used to debug.
+
+It is in `cassert`.
+
+e.g.
+```
+#include<cassert>
+assert(a > 0);
+```
+
+## Tips
+(1) Use one sentence of `assert` to judge **only one statement**, or you may not know the exact error.
+
+(2) `assert` is just a assistant means and it cannot replace `if`.
+
+(3) You can add some descriptive sentences.
+```
+assert("np must not be NULL. " && np != NULL);
+//or
+assert(("np must not be NULL. ", np != NULL));  //two brackets
+```
+
+## Application
+### Point
+
+```
+//to be used to confirm point is not NULL
+int* p = NULL;
+p = &a;
+assert(p != NULL);
+```
+
+### Parameter
+Use `assert` to check parameters of functions.
